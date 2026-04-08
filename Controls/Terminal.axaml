@@ -15,8 +15,8 @@
         
         <StackPanel>
             <ComboBox ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedPlatformDevice}" HorizontalAlignment="Stretch" />
-            <Button Command="{Binding UpdatePlatformDevices}" Content="Aktualisieren" HorizontalAlignment="Stretch" />
-            <Button Command="{Binding OpenPutty}" Content="Putty öffnen" IsEnabled="{Binding CanOpenPutty}" HorizontalAlignment="Stretch" />
+            <Button Command="{Binding UpdatePlatformDevices}" Content="{DynamicResource Refresh}" HorizontalAlignment="Stretch" />
+            <Button Command="{Binding OpenPutty}" Content="{DynamicResource OpenPutty}" IsEnabled="{Binding CanOpenPutty}" HorizontalAlignment="Stretch" />
         </StackPanel>
     </Grid>
 </UserControl>

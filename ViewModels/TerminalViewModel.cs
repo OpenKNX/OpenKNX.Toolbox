@@ -8,6 +8,7 @@ using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using OpenKNX.Toolbox.Lib.Helper;
 using OpenKNX.Toolbox.Lib.Platforms;
+using OpenKNX.Toolbox.Localization;
 
 namespace OpenKNX.Toolbox.ViewModels;
 
@@ -54,7 +55,7 @@ public partial class TerminalViewModel : ViewModelBase, INotifyPropertyChanged
                 proc.Start();
                 return;
             } catch (Exception ex) {
-                var box = MessageBoxManager.GetMessageBoxStandard("Fehler", "Putty konnte nicht gestartet werden:\r\n\r\n" + ex.Message, ButtonEnum.Ok, Icon.Error);
+                var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Error, Localizer.Instance.Strings.ErrorStartingPutty + "\r\n\r\n" + ex.Message, ButtonEnum.Ok, Icon.Error);
                 await box.ShowWindowDialogAsync(Views.MainWindow.Instance);
             }
         }

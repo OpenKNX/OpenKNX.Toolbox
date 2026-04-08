@@ -3,6 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
+using OpenKNX.Toolbox.Localization;
 using OpenKNX.Toolbox.ViewModels;
 using OpenKNX.Toolbox.Views;
 
@@ -13,6 +14,7 @@ public partial class App : Application
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
+        Localizer.Instance.Initialize();
     }
 
     public override void OnFrameworkInitializationCompleted()

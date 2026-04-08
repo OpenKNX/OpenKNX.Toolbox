@@ -1,4 +1,4 @@
-﻿using Avalonia;
+using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Platform;
 using Avalonia.Platform.Storage;
@@ -8,6 +8,7 @@ using OpenKNX.Toolbox.Lib.Data;
 using OpenKNX.Toolbox.Lib.Helper;
 using OpenKNX.Toolbox.Lib.Models;
 using OpenKNX.Toolbox.Lib.Platforms;
+using OpenKNX.Toolbox.Localization;
 using OpenKNX.Toolbox.Views;
 using System;
 using System.Collections.Generic;
@@ -197,7 +198,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
         }
     }
 
-    private string _releasePlaceHolder = "Release auswählen";
+    private string _releasePlaceHolder = Localizer.Instance.Strings.SelectRelease;
     public string ReleasePlaceHolder
     {
         get { return _releasePlaceHolder; }
@@ -207,7 +208,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
         }
     }
 
-    private string _openInBrowserText = "Repo in Browser öffnen";
+    private string _openInBrowserText = Localizer.Instance.Strings.OpenRepoInBrowser;
     public string OpenInBrowserText
     {
         get { return _openInBrowserText; }
@@ -221,7 +222,22 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
 
     public CreatorViewModel()
     {
+        Localizer.Instance.LanguageChanged += OnLanguageChanged;
         _ = LoadCache();
+    }
+
+    private void OnLanguageChanged()
+    {
+        if (_selectedRepository != null)
+        {
+            CheckReleases();
+            CheckOpenBrowser();
+        }
+        else
+        {
+            ReleasePlaceHolder = Localizer.Instance.Strings.SelectRelease;
+            OpenInBrowserText = Localizer.Instance.Strings.OpenRepoInBrowser;
+        }
     }
 
     private async Task LoadCache()
@@ -243,7 +259,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
                 FilterReleases();
                 NotifyPropertyChanged("CanSelectRepo");
             } catch(Exception ex) {
-                var box = MessageBoxManager.GetMessageBoxStandard("Fehler", "Die lokale Datei für die Repos konnte nicht geladen werden:\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
+                var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Error, Localizer.Instance.Strings.ErrorLoadingReposCache + "\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
                 await box.ShowWindowDialogAsync(MainWindow.Instance);
             }
         }
@@ -262,7 +278,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
             } catch(Exception ex) {
                 string folderName = folder;
                 folderName = folderName.Substring(folderName.LastIndexOf(Path.DirectorySeparatorChar) + 1);
-                var box = MessageBoxManager.GetMessageBoxStandard("Fehler", $"Die lokale Datei für das Repo '{folderName}' konnte nicht geladen werden:\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
+                var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Error, string.Format(Localizer.Instance.Strings.ErrorLoadingRepoCache, folderName) + "\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
                 await box.ShowWindowDialogAsync(MainWindow.Instance);
             }
             LocalReleases.Sort((a, b) => string.Compare(a.RepositoryName, b.RepositoryName));
@@ -305,7 +321,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
 
         try {
             if(SelectedRelease == null || SelectedRepository == null)
-                throw new Exception("Es wurde kein Release oder Repository ausgewählt.");
+                throw new Exception(Localizer.Instance.Strings.NoReleaseOrRepoSelected);
 
             string current = GetStoragePath();
             if(!Directory.Exists(current))
@@ -323,7 +339,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
             targetFolder = Path.Combine(current, SelectedRelease.Name.Substring(0, SelectedRelease.Name.LastIndexOf('.')));
             if(Directory.Exists(targetFolder))
             {
-                var box = MessageBoxManager.GetMessageBoxStandard("Warnung", $"Das Release '{SelectedRelease.Name}' existiert bereits lokal.\r\nSoll es überschrieben werden?", ButtonEnum.YesNo, Icon.Warning);
+                var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Warning, string.Format(Localizer.Instance.Strings.ReleaseExistsOverwrite, SelectedRelease.Name), ButtonEnum.YesNo, Icon.Warning);
                 var result = await box.ShowWindowDialogAsync(MainWindow.Instance);
                 if(result == ButtonResult.No) {
                     IsDownloading = false;
@@ -349,7 +365,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
             //LocalReleases.Sort((a, b) => a.RepositoryName.ComareTo(b.RepositoryName));
         } catch(Exception ex)
         {
-            var box = MessageBoxManager.GetMessageBoxStandard("Fehler", "Das Repository konnte nicht heruntergeladen werden:\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
+            var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Error, Localizer.Instance.Strings.ErrorDownloadingRepo + "\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
             await box.ShowWindowDialogAsync(MainWindow.Instance);
         }
 
@@ -362,15 +378,15 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
         {
             if(_selectedRepository.Releases.Count == 0 && _selectedRepository.ReleasesAll.Count > 0)
             {
-                ReleasePlaceHolder = "Nur Prereleases verfügbar";
+                ReleasePlaceHolder = Localizer.Instance.Strings.OnlyPrereleasesAvailable;
             }
             else if(_selectedRepository.ReleasesAll.Count == 0)
             {
-                ReleasePlaceHolder = "Keine Releases verfügbar";
+                ReleasePlaceHolder = Localizer.Instance.Strings.NoReleasesAvailable;
             }
             else
             {
-                ReleasePlaceHolder = "Release auswählen";
+                ReleasePlaceHolder = Localizer.Instance.Strings.SelectRelease;
             }
         }
     }
@@ -382,11 +398,11 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
 
         if(SelectedRelease != null)
         {
-            OpenInBrowserText = "Release-Notes öffnen";
+            OpenInBrowserText = Localizer.Instance.Strings.OpenReleaseNotes;
         }
         else
         {
-            OpenInBrowserText = "Repository öffnen";
+            OpenInBrowserText = Localizer.Instance.Strings.OpenRepository;
         }
     }
 
@@ -406,11 +422,11 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
             File.WriteAllText(Path.Combine(GetStoragePath(), "cache.json"), Newtonsoft.Json.JsonConvert.SerializeObject(Repos));
         } catch(Octokit.RateLimitExceededException ex) {
             System.Console.WriteLine("Raitlimit Exceeded " + ex.Message);
-            var box = MessageBoxManager.GetMessageBoxStandard("Fehler", "Das Ratelimit für Github wurde überschritten.\r\nDieser wird in einer Stunde zurückgesetzt.\r\nVersuchen Sie es dann erneut.", ButtonEnum.Ok, Icon.Error);
+            var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Error, Localizer.Instance.Strings.RateLimitExceeded, ButtonEnum.Ok, Icon.Error);
             await box.ShowWindowDialogAsync(MainWindow.Instance);
         } catch(Exception ex) {
             System.Console.WriteLine("Failed to update Repos: " + ex.Message);
-            var box = MessageBoxManager.GetMessageBoxStandard("Fehler", "Die Repositories konnten nicht aktualisiert werden:\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
+            var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Error, Localizer.Instance.Strings.ErrorUpdatingRepos + "\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
             await box.ShowWindowDialogAsync(MainWindow.Instance);
         }
         FilterReleases();
@@ -463,7 +479,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
         UploadProgressIsIndeterminate = true;
         try {
             if(SelectedProduct == null || SelectedProduct.ReleaseContent == null)
-                throw new Exception("Es wurde kein Produkt ausgewählt oder ReleaseContent ist null.");
+                throw new Exception(Localizer.Instance.Strings.NoProductOrReleaseContent);
 
             if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop ||
                 desktop.MainWindow?.StorageProvider is not { } provider)
@@ -474,9 +490,9 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
 
             var file = await provider.SaveFilePickerAsync(new FilePickerSaveOptions
             {
-                Title = "Speichere KnxProd",
+                Title = Localizer.Instance.Strings.SaveKnxProd,
                 SuggestedFileName = defaultName,
-                FileTypeChoices = new[] { new FilePickerFileType("Knx Produkt Datenbank")
+                FileTypeChoices = new[] { new FilePickerFileType(Localizer.Instance.Strings.KnxProductDatabase)
                 {
                     Patterns = new[] { "*.knxprod" }
                 }}
@@ -493,11 +509,11 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
                     File.Delete(outFile);
                 string workingDir = GetAbsWorkingDir(xmlFile);
                 await Toolbox.Sign.SignHelper.ExportKnxprodAsync(workingDir, outFile, xmlFile, "", false, false);
-                var box = MessageBoxManager.GetMessageBoxStandard("Erfolgeich", "Die KnxProd wurde erfolgreich erstellt.", ButtonEnum.Ok, Icon.Info);
+                var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Success, Localizer.Instance.Strings.KnxProdCreatedSuccessfully, ButtonEnum.Ok, Icon.Info);
                 await box.ShowWindowDialogAsync(MainWindow.Instance);
             }
         } catch(Exception ex) {
-            var box = MessageBoxManager.GetMessageBoxStandard("Fehler", "Die KnxProd konnte nicht erstellt werden:\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
+            var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Error, Localizer.Instance.Strings.ErrorCreatingKnxProd + "\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
             await box.ShowWindowDialogAsync(MainWindow.Instance);
         }
         UploadProgressIsIndeterminate = false;
@@ -511,7 +527,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
 
         var files = await provider.OpenFilePickerAsync(new FilePickerOpenOptions
         {
-            Title = "Öffne Release Datei",
+            Title = Localizer.Instance.Strings.OpenReleaseFile,
             AllowMultiple = false
         });
 
@@ -565,7 +581,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
         try
         {
             if(SelectedProduct == null)
-                throw new Exception("Es wurde kein Produkt ausgewählt.");
+                throw new Exception(Localizer.Instance.Strings.NoProductSelected);
 
             PlatformDevices.Clear();
             IPlatform? platform = null;
@@ -573,12 +589,12 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
                 if(plat.Architecture == SelectedProduct.Architecture)
                     platform = plat;
             
-            if(platform == null) throw new Exception($"Es konnte keine Platform für Architectur {SelectedProduct.Architecture} gefunden werden");
+            if(platform == null) throw new Exception(string.Format(Localizer.Instance.Strings.NoPlatformForArchitecture, SelectedProduct.Architecture));
             var devices = await platform.GetDevices();
             foreach(var y in devices)
                 PlatformDevices.Add(y);
         } catch(Exception ex) {
-            var box = MessageBoxManager.GetMessageBoxStandard("Fehler", "Die Liste konnte nicht aktualisiert werden:\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
+            var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Error, Localizer.Instance.Strings.ErrorUpdatingList + "\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
             await box.ShowWindowDialogAsync(MainWindow.Instance);
         }
         UploadProgressIsIndeterminate = false;
@@ -591,23 +607,23 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
         try
         {
             if(SelectedProduct == null || SelectedPlatformDevice == null)
-                throw new Exception("Es wurde kein Produkt oder Gerät ausgewählt.");
+                throw new Exception(Localizer.Instance.Strings.NoProductOrDeviceSelected);
 
             IPlatform? platform = null;
             foreach(IPlatform plat in OpenKNX.Toolbox.Lib.Helper.PlatformHelper.GetPlatforms())
                 if(plat.Architecture == SelectedProduct.Architecture)
                     platform = plat;
             
-            if(platform == null) throw new Exception($"Es konnte keine Platform für Architectur {SelectedProduct.Architecture} gefunden werden");
+            if(platform == null) throw new Exception(string.Format(Localizer.Instance.Strings.NoPlatformForArchitecture, SelectedProduct.Architecture));
             
             var progress = new Progress<KeyValuePair<long, long>>();
             progress.ProgressChanged += ProgressChanged_UpdateUpload;
             Console.WriteLine("uploading2");
             await platform.DoUpload(SelectedPlatformDevice, SelectedProduct.FirmwareFile, progress);
-            var box = MessageBoxManager.GetMessageBoxStandard("Erfolgreich", "Die Firmware wurde erfolgreich übertragen.", ButtonEnum.Ok, Icon.Success);
+            var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Success, Localizer.Instance.Strings.FirmwareTransferredSuccessfully, ButtonEnum.Ok, Icon.Success);
             await box.ShowWindowDialogAsync(MainWindow.Instance);
         } catch(Exception ex) {
-            var box = MessageBoxManager.GetMessageBoxStandard("Fehler", "Die Firmware konnte nicht übertragen werden:\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
+            var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Error, Localizer.Instance.Strings.ErrorTransferringFirmware + "\r\n\r\n" + GetExceptionMessages(ex), ButtonEnum.Ok, Icon.Error);
             await box.ShowWindowDialogAsync(MainWindow.Instance);
         }
         UploadProgressIsIndeterminate = false;
@@ -617,7 +633,7 @@ public partial class CreatorViewModel : ViewModelBase, INotifyPropertyChanged
     {
         if(SelectedRepository == null)
         {
-            var box = MessageBoxManager.GetMessageBoxStandard("Fehler", "Bitte wählen Sie zuerst ein Projekt aus.", ButtonEnum.Ok, Icon.Error);
+            var box = MessageBoxManager.GetMessageBoxStandard(Localizer.Instance.Strings.Error, Localizer.Instance.Strings.SelectProjectFirst, ButtonEnum.Ok, Icon.Error);
             await box.ShowWindowDialogAsync(MainWindow.Instance);
             return;
         }

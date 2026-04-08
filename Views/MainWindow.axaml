@@ -32,16 +32,28 @@
     </Style>
   </Window.Styles>
 
-    <TabControl>
-        <TabItem Header="Soft-/Firmware">
-            <ctrls:Creator />
-        </TabItem>
-        <!-- <TabItem Header="Filetransfer">
-            <ctrls:Filetransfer />
-        </TabItem> -->
-        <!-- <TabItem Header="Terminal">
-            <ctrls:Terminal />
-        </TabItem> -->
-    </TabControl>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10 5">
+            <TextBlock Text="{DynamicResource Language}" VerticalAlignment="Center" Margin="0 0 5 0" />
+            <ComboBox Name="LanguageComboBox" MinWidth="100" SelectionChanged="LanguageComboBox_SelectionChanged" />
+        </StackPanel>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="{DynamicResource SoftFirmware}">
+                <ctrls:Creator />
+            </TabItem>
+            <!-- <TabItem Header="Filetransfer">
+                <ctrls:Filetransfer />
+            </TabItem> -->
+            <!-- <TabItem Header="Terminal">
+                <ctrls:Terminal />
+            </TabItem> -->
+        </TabControl>
+    </Grid>
     
 </Window>
