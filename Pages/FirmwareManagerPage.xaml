@@ -9,7 +9,8 @@
       xmlns:libmodels="clr-namespace:OpenKNX.Toolbox.Lib.Models;assembly=OpenKNX.Toolbox.Lib"
       xmlns:conv="clr-namespace:OpenKNX.Toolbox.Converter"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-      mc:Ignorable="d" 
+      xmlns:properties="clr-namespace:OpenKNX.Toolbox.Properties"
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FirmwareManagerPage"
       x:Name="PageControl">
@@ -34,19 +35,19 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ui:Button Command="{Binding ReloadFirmwaresCommand}" ToolTip="Liste neu laden" Background="{DynamicResource AccentTextFillColorPrimaryBrush}" Margin="1" VerticalAlignment="Stretch">
+        <ui:Button Command="{Binding ReloadFirmwaresCommand}" ToolTip="{x:Static properties:Resources.ReloadList}" Background="{DynamicResource AccentTextFillColorPrimaryBrush}" Margin="1" VerticalAlignment="Stretch">
             <ui:Button.Icon>
                 <ui:SymbolIcon Symbol="ArrowClockwise24" />
             </ui:Button.Icon>
         </ui:Button>
 
-        <ui:Button Grid.Column="1" Command="{Binding OpenHelpCommand}" CommandParameter="{Binding SelectedItem, ElementName=AppList}" ToolTip="Thread auf knx-user-forum.de öffnen" Margin="1" VerticalAlignment="Stretch" IsEnabled="{Binding SelectedItem.HelpThread, ElementName=AppList, Converter={StaticResource NullOrEmptyToBoolConverter}, ConverterParameter=true, FallbackValue=false}">
+        <ui:Button Grid.Column="1" Command="{Binding OpenHelpCommand}" CommandParameter="{Binding SelectedItem, ElementName=AppList}" ToolTip="{x:Static properties:Resources.OpenHelpThread}" Margin="1" VerticalAlignment="Stretch" IsEnabled="{Binding SelectedItem.HelpThread, ElementName=AppList, Converter={StaticResource NullOrEmptyToBoolConverter}, ConverterParameter=true, FallbackValue=false}">
             <ui:Button.Icon>
                 <ui:SymbolIcon Symbol="ChatHelp24" />
             </ui:Button.Icon>
         </ui:Button>
 
-        <ui:Button Grid.Column="2" Command="{Binding OpenRepoCommand}" CommandParameter="{Binding SelectedItem, ElementName=AppList}" ToolTip="Repository auf Github öffnen" Margin="1" VerticalAlignment="Stretch" IsEnabled="{Binding SelectedItem, ElementName=AppList, Converter={StaticResource NullToBoolConverter}, ConverterParameter=true, FallbackValue=false}">
+        <ui:Button Grid.Column="2" Command="{Binding OpenRepoCommand}" CommandParameter="{Binding SelectedItem, ElementName=AppList}" ToolTip="{x:Static properties:Resources.OpenRepository}" Margin="1" VerticalAlignment="Stretch" IsEnabled="{Binding SelectedItem, ElementName=AppList, Converter={StaticResource NullToBoolConverter}, ConverterParameter=true, FallbackValue=false}">
             <ui:Button.Icon>
                 <ui:SymbolIcon Symbol="Globe24" />
             </ui:Button.Icon>
@@ -72,17 +73,17 @@
                     <Grid Margin="10,5" Opacity="{Binding IsLocalAvailable, Converter={StaticResource BoolToOpacityConverter}}">
                         <Grid.ContextMenu>
                             <ContextMenu>
-                                <ui:MenuItem Header="Herunterladen" Command="{Binding DownloadReleaseCommand}" Visibility="{Binding IsLocalAvailable, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=true}">
+                                <ui:MenuItem Header="{x:Static properties:Resources.Download}" Command="{Binding DownloadReleaseCommand}" Visibility="{Binding IsLocalAvailable, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=true}">
                                     <ui:MenuItem.Icon>
                                         <ui:SymbolIcon Symbol="ArrowDownload24" />
                                     </ui:MenuItem.Icon>
                                 </ui:MenuItem>
-                                <ui:MenuItem Header="Knxprod erstellen" Command="{Binding CreateKnxprodCommand}" CommandParameter="{Binding .}"  Visibility="{Binding IsLocalAvailable, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <ui:MenuItem Header="{x:Static properties:Resources.CreateKnxprod}" Command="{Binding CreateKnxprodCommand}" CommandParameter="{Binding .}"  Visibility="{Binding IsLocalAvailable, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <ui:MenuItem.Icon>
                                         <ui:SymbolIcon Symbol="Box24" />
                                     </ui:MenuItem.Icon>
                                 </ui:MenuItem>
-                                <ui:MenuItem x:Name="FlashMenuItem" Header="Auf Gerät flashen" ItemsSource="{Binding ContentModel.Products}" Visibility="{Binding IsLocalAvailable, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <ui:MenuItem x:Name="FlashMenuItem" Header="{x:Static properties:Resources.FlashToDevice}" ItemsSource="{Binding ContentModel.Products}" Visibility="{Binding IsLocalAvailable, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <ui:MenuItem.Icon>
                                         <ui:SymbolIcon Symbol="SendCopy24" />
                                     </ui:MenuItem.Icon>
@@ -94,12 +95,12 @@
                                         </Style>
                                     </MenuItem.ItemContainerStyle>
                                 </ui:MenuItem>
-                                <ui:MenuItem Header="Release-Notes öffnen" Command="{Binding OpenReleaseNotesCommand}">
+                                <ui:MenuItem Header="{x:Static properties:Resources.OpenReleaseNotes}" Command="{Binding OpenReleaseNotesCommand}">
                                     <ui:MenuItem.Icon>
                                         <ui:SymbolIcon Symbol="Notepad24" />
                                     </ui:MenuItem.Icon>
                                 </ui:MenuItem>
-                                <ui:MenuItem Header="Löschen" Foreground="IndianRed" Command="{Binding DeleteReleaseCommand}" Visibility="{Binding IsLocalAvailable, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <ui:MenuItem Header="{x:Static properties:Resources.Delete}" Foreground="IndianRed" Command="{Binding DeleteReleaseCommand}" Visibility="{Binding IsLocalAvailable, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <ui:MenuItem.Icon>
                                         <ui:SymbolIcon Symbol="Delete24" />
                                     </ui:MenuItem.Icon>

@@ -13,7 +13,7 @@ namespace OpenKNX.Toolbox.Classes.Actions
 {
     public class KnxprodAction : IAction, INotifyPropertyChanged
     {
-        public string ActionName { get; } = "Knxprod erstellen";
+        public string ActionName { get; } = Properties.Resources.CreateKnxprod;
 
         public string Name { get; }
 
@@ -46,7 +46,7 @@ namespace OpenKNX.Toolbox.Classes.Actions
 
         public KnxprodAction(string name, string xmlPath, string output)
         {
-            Name = $"Erstelle knxprod {name}";
+            Name = string.Format(Properties.Resources.CreateKnxprodDisplay, name);
             _xmlPath = xmlPath;
             _outputPath = output;
         }
@@ -75,7 +75,7 @@ namespace OpenKNX.Toolbox.Classes.Actions
             if (workingDir == null)
                 throw new Exception("Could not retrieve workingdir: " + _xmlPath);
 
-            await Sign.SignHelper.ExportKnxprodAsync(workingDir, _outputPath, _xmlPath, "", false, false, "", _token);
+            await Sign.SignHelper.ExportKnxprodAsync(workingDir, _outputPath, _xmlPath, "", false, false, string.Empty, _token);
         }
     }
 }

@@ -6,12 +6,13 @@
       xmlns:local="clr-namespace:OpenKNX.Toolbox.Dialogs"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:conv="clr-namespace:OpenKNX.Toolbox.Converter"
+      xmlns:properties="clr-namespace:OpenKNX.Toolbox.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="{Binding Title}"
       IsPrimaryButtonEnabled="{Binding CanContinue}"
-      PrimaryButtonText="Auswählen"
-      CloseButtonText="Abbrechen">
+      PrimaryButtonText="{x:Static properties:Resources.Select}"
+      CloseButtonText="{x:Static properties:Resources.Cancel}">
     <ui:ContentDialog.Resources>
         <Style BasedOn="{StaticResource {x:Type ui:ContentDialog}}" TargetType="{x:Type local:ObjectSelectDialog}" />
     </ui:ContentDialog.Resources>

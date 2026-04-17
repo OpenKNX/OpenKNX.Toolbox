@@ -9,7 +9,7 @@ namespace OpenKNX.Toolbox.ViewModels
 {
     public class NewConnectionDialogViewModel
     {
-        public string Title { get; } = "Neue Verbindung hinzufügen";
+        public string Title { get; } = Properties.Resources.NewConnectionTitle;
         public bool CanContinue { get; set; } = true;
 
         public string Name { get; set; } = string.Empty;

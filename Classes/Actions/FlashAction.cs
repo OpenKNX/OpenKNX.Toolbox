@@ -17,7 +17,7 @@ namespace OpenKNX.Toolbox.Classes.Actions
 {
     public class FlashAction : IAction, INotifyPropertyChanged
     {
-        public string ActionName { get; } = "Release flashen";
+        public string ActionName { get; } = Properties.Resources.FlashRelease;
 
         public string Name { get; }
 

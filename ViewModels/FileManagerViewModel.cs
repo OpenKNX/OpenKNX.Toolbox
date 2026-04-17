@@ -60,7 +60,7 @@ namespace OpenKNX.Toolbox.ViewModels
         {
             if (_connection == null)
             {
-                MainViewModel.Instanz.ShowError("FileManager Error", "Es wurde keine Verbindung zu einem Gateway hergestellt.");
+                MainViewModel.Instanz.ShowError("FileManager Error", Properties.Resources.NoGatewayConnection);
                 return;
             }
             ActionsViewModel.Instanz.AddAction(new FileAction(RemoteAddressUni, _connection, file.FullPath, string.Empty, file.IsFile, FileActionTypes.Delete));
@@ -71,12 +71,12 @@ namespace OpenKNX.Toolbox.ViewModels
         {
             if(!file.IsFile)
             {
-                MainViewModel.Instanz.ShowError("FileManager Error", "Das ausgewählte Element ist kein Datei.");
+                MainViewModel.Instanz.ShowError("FileManager Error", Properties.Resources.SelectedItemNotFile);
                 return;
             }
             if (_connection == null)
             {
-                MainViewModel.Instanz.ShowError("FileManager Error", "Es wurde keine Verbindung zu einem Gateway hergestellt.");
+                MainViewModel.Instanz.ShowError("FileManager Error", Properties.Resources.NoGatewayConnection);
                 return;
             }
             ActionsViewModel.Instanz.AddAction(new FileAction(RemoteAddressUni, _connection, file.FullPath, @"C:\Users\Mike\Desktop\sources\test.txt", true, FileActionTypes.Download));
@@ -90,11 +90,11 @@ namespace OpenKNX.Toolbox.ViewModels
                 RemoteAddressUni = UnicastAddress.FromString(RemoteAddress);
             } catch
             {
-                MainViewModel.Instanz.ShowError("FileManager Error", "Die angegeben Adresse ist ungültig.");
+                MainViewModel.Instanz.ShowError("FileManager Error", Properties.Resources.InvalidAddress);
                 return;
             }
 
-            ObjectSelectDialog selectDialog = new ObjectSelectDialog("Gateway Auswahl", ConnectionsViewModel.Instanz.Connections.Cast<object>().ToList());
+            ObjectSelectDialog selectDialog = new ObjectSelectDialog(Properties.Resources.GatewaySelection, ConnectionsViewModel.Instanz.Connections.Cast<object>().ToList());
 
             CancellationTokenSource token = new CancellationTokenSource();
             await MainViewModel.Instanz.ContentDialogService.ShowAsync(

@@ -69,23 +69,23 @@ namespace OpenKNX.Toolbox.Classes.Actions
             switch (actionType)
             {
                 case FileActionTypes.Delete:
-                    ActionName = "Datei löschen";
-                    Name = $"Lösche Datei {_source}";
+                    ActionName = Properties.Resources.DeleteFile;
+                    Name = string.Format(Properties.Resources.DeleteFileDisplay, _source);
                     break;
 
                 case FileActionTypes.Download:
-                    ActionName = "Datei herunterladen";
+                    ActionName = Properties.Resources.DownloadFile;
                     Name = _source;
                     break;
 
                 case FileActionTypes.Upload:
-                    ActionName = "Datei hochladen";
+                    ActionName = Properties.Resources.UploadFile;
                     Name = _destination;
                     break;
 
                 default:
-                    ActionName = "Unbekannte Aktion";
-                    Name = "Unbekannte Aktion";
+                    ActionName = Properties.Resources.UnknownAction;
+                    Name = Properties.Resources.UnknownAction;
                     break;
             }
         }
@@ -114,7 +114,7 @@ namespace OpenKNX.Toolbox.Classes.Actions
                     break;
 
                 default:
-                    MainViewModel.Instanz.ShowError("File Action Error", "Unbekannter Aktionstyp: " + _actionType.ToString());
+                    MainViewModel.Instanz.ShowError("File Action Error", Properties.Resources.UnknownActionType + _actionType.ToString());
                     break;
             }
 

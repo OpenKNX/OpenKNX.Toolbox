@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OpenKNX.Toolbox.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:properties="clr-namespace:OpenKNX.Toolbox.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ConnectionsPage">
@@ -22,12 +23,12 @@
                 </Style>
             </Menu.Resources>
 
-            <ui:MenuItem Header="Hinzufügen" Command="{Binding AddConnectionCommand}">
+            <ui:MenuItem Header="{x:Static properties:Resources.Add}" Command="{Binding AddConnectionCommand}">
                 <ui:MenuItem.Icon>
                     <ui:SymbolIcon Symbol="PlugConnectedAdd20" />
                 </ui:MenuItem.Icon>
             </ui:MenuItem>
-            <ui:MenuItem Header="Löschen" IsEnabled="{Binding SelectedItem.IsManuallyAdded, ElementName=ConnectionsListBox, FallbackValue=false}">
+            <ui:MenuItem Header="{x:Static properties:Resources.Delete}" IsEnabled="{Binding SelectedItem.IsManuallyAdded, ElementName=ConnectionsListBox, FallbackValue=false}">
                 <ui:MenuItem.Icon>
                     <ui:SymbolIcon Symbol="Delete24" />
                 </ui:MenuItem.Icon>
