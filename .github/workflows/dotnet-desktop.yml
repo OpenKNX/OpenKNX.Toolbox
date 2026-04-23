@@ -45,12 +45,12 @@ jobs:
           if (-not $exe) { throw "Keine EXE im publish-Ordner gefunden." }
 
           $info = (Get-Item $exe.FullName).VersionInfo
-          $version = $info.ProductVersion
+          $version = $info.FileVersion
 
           if (-not $version) { throw "Konnte ProductVersion nicht auslesen." }
-          $cleanVersion = $rawVersion.Split('+')[0]
-          echo "Gefundene Version: $cleanVersion"
-          echo "version=$cleanVersion" >> $env:GITHUB_OUTPUT
+          
+          echo "Gefundene Version: $version"
+          echo "version=$version" >> $env:GITHUB_OUTPUT
 
     - name: Create ZIP
       run: |
