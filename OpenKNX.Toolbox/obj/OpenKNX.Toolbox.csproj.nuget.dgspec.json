@@ -1,0 +1,415 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox\\OpenKNX.Toolbox.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\Kaenx-Konnect\\Kaenx.Konnect.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\Kaenx-Konnect\\Kaenx.Konnect.csproj",
+        "projectName": "Kaenx.Konnect",
+        "projectPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\Kaenx-Konnect\\Kaenx.Konnect.csproj",
+        "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\Kaenx-Konnect\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\KnxFileTransferClient.Lib\\KnxFileTransferClient.Lib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\KnxFileTransferClient.Lib\\KnxFileTransferClient.Lib.csproj",
+        "projectName": "KnxFileTransferClient.Lib",
+        "projectPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\KnxFileTransferClient.Lib\\KnxFileTransferClient.Lib.csproj",
+        "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\KnxFileTransferClient.Lib\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\Kaenx-Konnect\\Kaenx.Konnect.csproj": {
+                "projectPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\Kaenx-Konnect\\Kaenx.Konnect.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "System.IO.Hashing": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "System.Management.Automation": {
+              "target": "Package",
+              "version": "[7.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Lib\\OpenKNX.Toolbox.Lib.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Lib\\OpenKNX.Toolbox.Lib.csproj",
+        "projectName": "OpenKNX.Toolbox.Lib",
+        "projectPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Lib\\OpenKNX.Toolbox.Lib.csproj",
+        "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Lib\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "ESPTool": {
+              "target": "Package",
+              "version": "[3.0.3, )"
+            },
+            "Newtonsoft.JSON": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Octokit": {
+              "target": "Package",
+              "version": "[14.0.0, )"
+            },
+            "System.IO.Ports": {
+              "target": "Package",
+              "version": "[9.0.9, )"
+            },
+            "System.Management.Automation": {
+              "target": "Package",
+              "version": "[7.5.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Sign\\OpenKNX.Toolbox.Sign.csproj": {
+      "version": "0.4.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Sign\\OpenKNX.Toolbox.Sign.csproj",
+        "projectName": "OpenKNX.Toolbox.Sign",
+        "projectPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Sign\\OpenKNX.Toolbox.Sign.csproj",
+        "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Sign\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.200"
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox\\OpenKNX.Toolbox.csproj": {
+      "version": "0.3.2",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox\\OpenKNX.Toolbox.csproj",
+        "projectName": "OpenKNX.Toolbox",
+        "projectPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox\\OpenKNX.Toolbox.csproj",
+        "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0-windows7.0": {
+            "targetAlias": "net9.0-windows",
+            "projectReferences": {
+              "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\Kaenx-Konnect\\Kaenx.Konnect.csproj": {
+                "projectPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\Kaenx-Konnect\\Kaenx.Konnect.csproj"
+              },
+              "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\KnxFileTransferClient.Lib\\KnxFileTransferClient.Lib.csproj": {
+                "projectPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\KnxFileTransferClient.Lib\\KnxFileTransferClient.Lib.csproj"
+              },
+              "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Lib\\OpenKNX.Toolbox.Lib.csproj": {
+                "projectPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Lib\\OpenKNX.Toolbox.Lib.csproj"
+              },
+              "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Sign\\OpenKNX.Toolbox.Sign.csproj": {
+                "projectPath": "C:\\Users\\Mike\\sources\\test\\OpenKNX.Toolbox\\OpenKNX.Toolbox.Sign\\OpenKNX.Toolbox.Sign.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.200"
+      },
+      "frameworks": {
+        "net9.0-windows7.0": {
+          "targetAlias": "net9.0-windows",
+          "dependencies": {
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.4.0, )"
+            },
+            "Tmds.MDns": {
+              "target": "Package",
+              "version": "[0.8.0, )"
+            },
+            "wpf-ui": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WPF": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,16 +1,16 @@
 {
     "folders": [
         {
-            "path": "."
+            "path": "OpenKNX.Toolbox"
         },
         {
-            "path": "../OpenKNX.Toolbox.Lib"
+            "path": "OpenKNX.Toolbox.Lib"
         },
         {
-            "path": "../OpenKNX.Toolbox.Sign"
+            "path": "OpenKNX.Toolbox.Sign"
         },
         {
-            "path": "../Kaenx-Konnect"
+            "path": "Kaenx-Konnect"
         }
     ]
 }

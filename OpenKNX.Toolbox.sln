@@ -1,9 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.2.0
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11702.344 oobstable
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenKNX.Toolbox", "OpenKNX.Toolbox.csproj", "{B66046C2-E2FB-C204-E113-0EE1774C24FB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenKNX.Toolbox.Lib", "OpenKNX.Toolbox.Lib\OpenKNX.Toolbox.Lib.csproj", "{908AB1DE-51D6-E4CD-050C-3822D286C756}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenKNX.Toolbox.Sign", "OpenKNX.Toolbox.Sign\OpenKNX.Toolbox.Sign.csproj", "{2C323231-024F-D6D4-C1A2-99DE9EA88422}"
@@ -12,16 +10,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnxFileTransferClient.Lib",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaenx.Konnect", "Kaenx-Konnect\Kaenx.Konnect.csproj", "{C4CFA2B3-AC68-5AEF-A9AB-F0918D43C8EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenKNX.Toolbox", "OpenKNX.Toolbox\OpenKNX.Toolbox.csproj", "{9E47BEA3-3DDA-A9CE-F71B-62BAB56BE8F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B66046C2-E2FB-C204-E113-0EE1774C24FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B66046C2-E2FB-C204-E113-0EE1774C24FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B66046C2-E2FB-C204-E113-0EE1774C24FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B66046C2-E2FB-C204-E113-0EE1774C24FB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{908AB1DE-51D6-E4CD-050C-3822D286C756}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{908AB1DE-51D6-E4CD-050C-3822D286C756}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{908AB1DE-51D6-E4CD-050C-3822D286C756}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,6 +34,10 @@ Global
 		{C4CFA2B3-AC68-5AEF-A9AB-F0918D43C8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4CFA2B3-AC68-5AEF-A9AB-F0918D43C8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4CFA2B3-AC68-5AEF-A9AB-F0918D43C8EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E47BEA3-3DDA-A9CE-F71B-62BAB56BE8F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E47BEA3-3DDA-A9CE-F71B-62BAB56BE8F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E47BEA3-3DDA-A9CE-F71B-62BAB56BE8F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E47BEA3-3DDA-A9CE-F71B-62BAB56BE8F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

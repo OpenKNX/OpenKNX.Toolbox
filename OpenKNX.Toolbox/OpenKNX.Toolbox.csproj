@@ -27,10 +27,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="Kaenx-Konnect\Kaenx.Konnect.csproj" />
-    <ProjectReference Include="KnxFileTransferClient.Lib\KnxFileTransferClient.Lib.csproj" />
-    <ProjectReference Include="OpenKNX.Toolbox.Lib\OpenKNX.Toolbox.Lib.csproj" />
-    <ProjectReference Include="OpenKNX.Toolbox.Sign\OpenKNX.Toolbox.Sign.csproj" />
+    <ProjectReference Include="..\Kaenx-Konnect\Kaenx.Konnect.csproj" />
+    <ProjectReference Include="..\KnxFileTransferClient.Lib\KnxFileTransferClient.Lib.csproj" />
+    <ProjectReference Include="..\OpenKNX.Toolbox.Lib\OpenKNX.Toolbox.Lib.csproj" />
+    <ProjectReference Include="..\OpenKNX.Toolbox.Sign\OpenKNX.Toolbox.Sign.csproj" />
   </ItemGroup>
 
   <ItemGroup>

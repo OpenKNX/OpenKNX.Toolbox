@@ -8,6 +8,7 @@
       xmlns:properties="clr-namespace:OpenKNX.Toolbox.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       Title="SettingsPage">
 
     <StackPanel Margin="20">
