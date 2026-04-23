@@ -7,7 +7,7 @@ on:
   workflow_dispatch:        # Manuell starten
   push:
     branches:
-      - main
+      - '**'
 
 jobs:
   build:
@@ -60,13 +60,30 @@ jobs:
           powershell Compress-Archive -Path ./publish/* -DestinationPath ./OpenKNX.Toolbox.Binaries.zip -Force
 
     - name: Create Git tag
+      shell: pwsh
       run: |
-          git tag v${{ steps.version.outputs.version }}
-          git push origin v${{ steps.version.outputs.version }}
+         $version = "${{ steps.version.outputs.version }}"
+         $branch = "${{ github.ref_name }}"
+         
+         # Branch normalisieren (feature/test → feature-test)
+         $safeBranch = $branch -replace '[^a-zA-Z0-9\-]', '_'
+      
+         if ($branch -eq "main") {
+              $tag = "v$version"
+          } else {
+              $tag = "v$version-$safeBranch"
+          }
+      
+          Write-Host "Finaler Tag: $tag"
+          echo "tag=$tag" >> $env:GITHUB_OUTPUT
+      
+          git tag $tag
+          git push origin $tag
+
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v${{ steps.version.outputs.version }}
-        name: v${{ steps.version.outputs.version }}
+        tag_name: v${{ steps.version.outputs.tag }}
+        name: v${{ steps.version.outputs.tag }}
         files: OpenKNX.Toolbox.Binaries.zip
