@@ -1,0 +1,105 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+# This workflow will build, test, sign and package a WPF or Windows Forms desktop application
+# built on .NET Core.
+# To learn how to migrate your existing application to .NET Core,
+# refer to https://docs.microsoft.com/en-us/dotnet/desktop-wpf/migration/convert-project-from-net-framework
+#
+# To configure this workflow:
+#
+# 1. Configure environment variables
+# GitHub sets default environment variables for every workflow run.
+# Replace the variables relative to your project in the "env" section below.
+#
+# 2. Signing
+# Generate a signing certificate in the Windows Application
+# Packaging Project or add an existing signing certificate to the project.
+# Next, use PowerShell to encode the .pfx file using Base64 encoding
+# by running the following Powershell script to generate the output string:
+#
+# $pfx_cert = Get-Content '.\SigningCertificate.pfx' -Encoding Byte
+# [System.Convert]::ToBase64String($pfx_cert) | Out-File 'SigningCertificate_Encoded.txt'
+#
+# Open the output file, SigningCertificate_Encoded.txt, and copy the
+# string inside. Then, add the string to the repo as a GitHub secret
+# and name it "Base64_Encoded_Pfx."
+# For more information on how to configure your signing certificate for
+# this workflow, refer to https://github.com/microsoft/github-actions-for-desktop-apps#signing
+#
+# Finally, add the signing certificate password to the repo as a secret and name it "Pfx_Key".
+# See "Build the Windows Application Packaging project" below to see how the secret is used.
+#
+# For more information on GitHub Actions, refer to https://github.com/features/actions
+# For a complete CI/CD sample to get started with GitHub Action workflows for Desktop Applications,
+# refer to https://github.com/microsoft/github-actions-for-desktop-apps
+
+name: .NET Core Desktop
+
+on:
+  workflow_dispatch:        # Manuell starten
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+      if: github.event_name == 'workflow_dispatch' ||
+        contains(github.event.head_commit.message, '[publish]')
+    runs-on: windows-latest  # For a list of available runner types, refer to
+           
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+
+    - name: Restore
+      run: dotnet restore ./OpenKNX.Toolbox/OpenKNX.Toolbox.csproj
+      
+    - name: Build
+      run: dotnet build ./OpenKNX.Toolbox/OpenKNX.Toolbox.csproj -c Release
+    
+    - name: Publish
+      run: dotnet publish ./OpenKNX.Toolbox/OpenKNX.Toolbox.csproj -c Release -r win-x86 -o ./publish -p:PublishSingleFile=true --self-contained
+    
+    - name: Read version from EXE
+      id: version
+      shell: pwsh
+      run: |
+          $exe = Get-ChildItem -Path "./publish" -Filter "*.exe" | Select-Object -First 1
+          if (-not $exe) { throw "Keine EXE im publish-Ordner gefunden." }
+
+          $info = (Get-Item $exe.FullName).VersionInfo
+          $version = $info.ProductVersion
+
+          if (-not $version) { throw "Konnte ProductVersion nicht auslesen." }
+
+          echo "Gefundene Version: $version"
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+
+    - name: Create ZIP
+      run: |
+          powershell Compress-Archive -Path ./publish/* -DestinationPath ./OpenKNX.Toolbox_${{ steps.version.outputs.version }}.zip -Force
+
+    - name: Create Git tag
+      run: |
+          git tag v${{ steps.version.outputs.version }}
+          git push origin v${{ steps.version.outputs.version }}
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: v${{ steps.version.outputs.version }}
+        name: v${{ steps.version.outputs.version }}
+        files: OpenKNX.Toolbox_${{ steps.version.outputs.version }}.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
