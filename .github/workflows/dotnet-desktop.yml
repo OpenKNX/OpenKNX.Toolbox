@@ -81,3 +81,4 @@ jobs:
         tag_name: ${{ steps.version.outputs.version }}
         name: ${{ steps.version.outputs.version }}
         files: OpenKNX.Toolbox.Binaries.zip
+        prerelease: ${{ github.ref_name != 'main' }}
