@@ -16,6 +16,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
       with:
+        submodules: true
         fetch-depth: 0
 
     # Install the .NET Core workload
