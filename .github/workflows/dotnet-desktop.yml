@@ -45,9 +45,9 @@ jobs:
           $version = $info.ProductVersion
 
           if (-not $version) { throw "Konnte ProductVersion nicht auslesen." }
-
-          echo "Gefundene Version: $version"
-          echo "version=$version" >> $env:GITHUB_OUTPUT
+          $cleanVersion = $rawVersion.Split('+')[0]
+          echo "Gefundene Version: $cleanVersion"
+          echo "version=$cleanVersion" >> $env:GITHUB_OUTPUT
 
     - name: Create ZIP
       run: |
