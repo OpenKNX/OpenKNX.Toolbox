@@ -41,10 +41,12 @@ jobs:
       id: version
       shell: pwsh
       run: |
-          $exe = Get-ChildItem -Path "./publish" -Filter "*.exe" | Select-Object -First 1
-          if (-not $exe) { throw "Keine EXE im publish-Ordner gefunden." }
+          $exePath = "./publish/OpenKNX.Toolbox.exe"
+          if (-not (Test-Path $exePath)) {
+              throw "$exePath konnte nicht gefunden werden"
+          }
 
-          $info = (Get-Item $exe.FullName).VersionInfo
+          $info = (Get-Item $exePath).VersionInfo
           $version = $info.FileVersion
 
           if (-not $version) { throw "Konnte ProductVersion nicht auslesen." }
@@ -54,7 +56,8 @@ jobs:
 
     - name: Create ZIP
       run: |
-          powershell Compress-Archive -Path ./publish/* -DestinationPath ./OpenKNX.Toolbox_${{ steps.version.outputs.version }}.zip -Force
+          Get-ChildItem -Path "./publish" -Filter "*.pdb" -Recurse | Remove-Item -Force
+          powershell Compress-Archive -Path ./publish/* -DestinationPath ./OpenKNX.Toolbox.Binaries.zip -Force
 
     - name: Create Git tag
       run: |
@@ -66,6 +69,4 @@ jobs:
       with:
         tag_name: v${{ steps.version.outputs.version }}
         name: v${{ steps.version.outputs.version }}
-        files: OpenKNX.Toolbox_${{ steps.version.outputs.version }}.zip
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        files: OpenKNX.Toolbox.Binaries.zip
