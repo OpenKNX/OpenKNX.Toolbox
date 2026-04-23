@@ -4,13 +4,13 @@ VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenKNX.Toolbox", "OpenKNX.Toolbox.csproj", "{B66046C2-E2FB-C204-E113-0EE1774C24FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenKNX.Toolbox.Lib", "..\OpenKNX.Toolbox.Lib\OpenKNX.Toolbox.Lib.csproj", "{908AB1DE-51D6-E4CD-050C-3822D286C756}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenKNX.Toolbox.Lib", "OpenKNX.Toolbox.Lib\OpenKNX.Toolbox.Lib.csproj", "{908AB1DE-51D6-E4CD-050C-3822D286C756}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenKNX.Toolbox.Sign", "..\OpenKNX.Toolbox.Sign\OpenKNX.Toolbox.Sign.csproj", "{2C323231-024F-D6D4-C1A2-99DE9EA88422}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenKNX.Toolbox.Sign", "OpenKNX.Toolbox.Sign\OpenKNX.Toolbox.Sign.csproj", "{2C323231-024F-D6D4-C1A2-99DE9EA88422}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnxFileTransferClient.Lib", "..\KnxFileTransferClient.Lib\KnxFileTransferClient.Lib.csproj", "{5C3AA25F-FCF8-7A57-9689-7685BA112100}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnxFileTransferClient.Lib", "KnxFileTransferClient.Lib\KnxFileTransferClient.Lib.csproj", "{5C3AA25F-FCF8-7A57-9689-7685BA112100}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaenx.Konnect", "..\Kaenx-Konnect\Kaenx.Konnect.csproj", "{C4CFA2B3-AC68-5AEF-A9AB-F0918D43C8EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kaenx.Konnect", "Kaenx-Konnect\Kaenx.Konnect.csproj", "{C4CFA2B3-AC68-5AEF-A9AB-F0918D43C8EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

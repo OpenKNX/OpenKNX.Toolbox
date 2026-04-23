@@ -257,7 +257,7 @@ namespace OpenKNX.Toolbox.ViewModels
             else if (model.Port == 3232)
                 model.Architecture = Lib.Data.ArchitectureType.ESP32;
             else
-                MainViewModel.Instanz.ShowError("Unbekannter Port", "Von einem Gerät wurde ein unbekannter Port angegeben: " + model.Port);
+                MainViewModel.Instanz.ShowError(Properties.Resources.UnknownPort, Properties.Resources.UnknownPortMessage + model.Port);
 
             UpdateDeviceInfo(model);
             DeviceModels.Add(model);

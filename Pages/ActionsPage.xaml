@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OpenKNX.Toolbox.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:properties="clr-namespace:OpenKNX.Toolbox.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ActionsPage">
@@ -15,7 +16,7 @@
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <ui:SymbolIcon Margin="0,0,6,0" Symbol="XboxConsole24" />
-                    <TextBlock Text="Wartende Aktionen" />
+                    <TextBlock Text="{x:Static properties:Resources.PendingActions}" />
                     <ui:InfoBadge Value="{Binding Actions.Count}" Margin="5,0,0,0" />
                 </StackPanel>
             </TabItem.Header>
@@ -27,7 +28,7 @@
             <TabItem.Header>
                 <StackPanel Orientation="Horizontal">
                     <ui:SymbolIcon Margin="0,0,6,0" Symbol="XboxConsole24" />
-                    <TextBlock Text="Historie" />
+                    <TextBlock Text="{x:Static properties:Resources.History}" />
                     <ui:InfoBadge Value="{Binding History.Count}" Margin="5,0,0,0" />
                 </StackPanel>
             </TabItem.Header>

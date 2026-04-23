@@ -59,7 +59,7 @@ namespace OpenKNX.Toolbox.Models
             NoteUrl = release.NotesUrl;
             IsPrerelease = release.IsPrerelease;
             Version = release.Version ?? new SemanticVersion(0);
-            VersionString = Version?.ToString() ?? "Unbekannt";
+            VersionString = Version?.ToString() ?? Properties.Resources.UnknownVersion;
             AppId = appId;
         }
 
@@ -104,7 +104,7 @@ namespace OpenKNX.Toolbox.Models
         {
             if (ContentModel == null)
             {
-                System.Windows.MessageBox.Show("Release ist lokal nicht verfügbar.", "Fehler", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                System.Windows.MessageBox.Show(Properties.Resources.ReleaseNotLocal, Properties.Resources.Error, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
                 return;
             }
 

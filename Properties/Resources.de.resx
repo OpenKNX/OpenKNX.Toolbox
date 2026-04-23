@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Navigation / Main Window -->
+  <data name="DeviceManager" xml:space="preserve">
+    <value>Geräte-Manager</value>
+  </data>
+  <data name="FileManager" xml:space="preserve">
+    <value>Datei-Manager</value>
+  </data>
+  <data name="FirmwareManager" xml:space="preserve">
+    <value>Firmware-Manager</value>
+  </data>
+  <data name="ScheduledActions" xml:space="preserve">
+    <value>Geplante Aktionen</value>
+  </data>
+  <data name="Connections" xml:space="preserve">
+    <value>Verbindungen</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="SelectedDevice" xml:space="preserve">
+    <value>Ausgewähltes Gerät</value>
+  </data>
+  <data name="CurrentAction" xml:space="preserve">
+    <value>Aktuelle Aktion</value>
+  </data>
+
+  <!-- Device Manager Page -->
+  <data name="DeviceListIntro" xml:space="preserve">
+    <value>Hier werden OpenKNX IP Geräte angezeigt</value>
+  </data>
+  <data name="OpenWebsite" xml:space="preserve">
+    <value>Webseite aufrufen</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="UpdateAvailable" xml:space="preserve">
+    <value>Update verfügbar!</value>
+  </data>
+
+  <!-- File Manager Page -->
+  <data name="Download" xml:space="preserve">
+    <value>Herunterladen</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Neu laden</value>
+  </data>
+  <data name="DropFileUpload" xml:space="preserve">
+    <value>Datei hier ablegen zum Hochladen</value>
+  </data>
+  <data name="AddressPlaceholder" xml:space="preserve">
+    <value>Adresse: 1.1.4</value>
+  </data>
+
+  <!-- Firmware Manager Page -->
+  <data name="ReloadList" xml:space="preserve">
+    <value>Liste neu laden</value>
+  </data>
+  <data name="OpenHelpThread" xml:space="preserve">
+    <value>Thread auf knx-user-forum.de öffnen</value>
+  </data>
+  <data name="OpenRepository" xml:space="preserve">
+    <value>Repository auf Github öffnen</value>
+  </data>
+  <data name="CreateKnxprod" xml:space="preserve">
+    <value>Knxprod erstellen</value>
+  </data>
+  <data name="FlashToDevice" xml:space="preserve">
+    <value>Auf Gerät flashen</value>
+  </data>
+  <data name="OpenReleaseNotes" xml:space="preserve">
+    <value>Release-Notes öffnen</value>
+  </data>
+
+  <!-- Actions Page -->
+  <data name="PendingActions" xml:space="preserve">
+    <value>Wartende Aktionen</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>Historie</value>
+  </data>
+
+  <!-- Connections Page -->
+  <data name="Add" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+
+  <!-- Dialogs -->
+  <data name="SelectFlashDevice" xml:space="preserve">
+    <value>Gerät zum Flashen auswählen</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Auswählen</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="ConnectionName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="IpAddress" xml:space="preserve">
+    <value>IP-Adresse</value>
+  </data>
+  <data name="IpPort" xml:space="preserve">
+    <value>IP-Port</value>
+  </data>
+  <data name="IsTcp" xml:space="preserve">
+    <value>Ist TCP</value>
+  </data>
+
+  <!-- Code-behind strings -->
+  <data name="Error" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="UnknownPort" xml:space="preserve">
+    <value>Unbekannter Port</value>
+  </data>
+  <data name="UnknownPortMessage" xml:space="preserve">
+    <value>Von einem Gerät wurde ein unbekannter Port angegeben: </value>
+  </data>
+  <data name="NoGatewayConnection" xml:space="preserve">
+    <value>Es wurde keine Verbindung zu einem Gateway hergestellt.</value>
+  </data>
+  <data name="SelectedItemNotFile" xml:space="preserve">
+    <value>Das ausgewählte Element ist keine Datei.</value>
+  </data>
+  <data name="InvalidAddress" xml:space="preserve">
+    <value>Die angegebene Adresse ist ungültig.</value>
+  </data>
+  <data name="GatewaySelection" xml:space="preserve">
+    <value>Gateway Auswahl</value>
+  </data>
+  <data name="DeleteFirmwareDirError" xml:space="preserve">
+    <value>Fehler beim Löschen des Firmware-Verzeichnisses:</value>
+  </data>
+  <data name="NewConnectionTitle" xml:space="preserve">
+    <value>Neue Verbindung hinzufügen</value>
+  </data>
+  <data name="UpdateNotPossible" xml:space="preserve">
+    <value>Update nicht möglich</value>
+  </data>
+  <data name="NoUpdateVersionSelected" xml:space="preserve">
+    <value>Es ist keine Update-Version ausgewählt.</value>
+  </data>
+  <data name="ApplicationIdMissing" xml:space="preserve">
+    <value>Die Anwendung mit der ID {0} ist nicht in der lokalen Datenbank vorhanden.</value>
+  </data>
+  <data name="ApplicationVersionMissing" xml:space="preserve">
+    <value>Die Anwendungsversion {0} ist nicht in der lokalen Datenbank vorhanden.</value>
+  </data>
+  <data name="VersionNotLocalYet" xml:space="preserve">
+    <value>Die Anwendungsversion ist noch nicht lokal vorhanden und wird jetzt heruntergeladen.</value>
+  </data>
+  <data name="ContentModelMissing" xml:space="preserve">
+    <value>Die Anwendungsversion enthält kein ContentModel.</value>
+  </data>
+  <data name="NoMatchingProducts" xml:space="preserve">
+    <value>Es wurden keine passenden Produkte gefunden.</value>
+  </data>
+  <data name="MultipleProductsFound" xml:space="preserve">
+    <value>Es wurden mehrere Produkte gefunden.</value>
+  </data>
+  <data name="NoProductSelected" xml:space="preserve">
+    <value>Es wurde kein Produkt ausgewählt.</value>
+  </data>
+  <data name="UnknownVersion" xml:space="preserve">
+    <value>Unbekannt</value>
+  </data>
+  <data name="ReleaseNotLocal" xml:space="preserve">
+    <value>Release ist lokal nicht verfügbar.</value>
+  </data>
+  <data name="DeleteFile" xml:space="preserve">
+    <value>Datei löschen</value>
+  </data>
+  <data name="DeleteFileDisplay" xml:space="preserve">
+    <value>Lösche Datei {0}</value>
+  </data>
+  <data name="DownloadFile" xml:space="preserve">
+    <value>Datei herunterladen</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>Datei hochladen</value>
+  </data>
+  <data name="UnknownAction" xml:space="preserve">
+    <value>Unbekannte Aktion</value>
+  </data>
+  <data name="UnknownActionType" xml:space="preserve">
+    <value>Unbekannter Aktionstyp: </value>
+  </data>
+  <data name="FlashRelease" xml:space="preserve">
+    <value>Release flashen</value>
+  </data>
+  <data name="DownloadRelease" xml:space="preserve">
+    <value>Release herunterladen</value>
+  </data>
+  <data name="CreateKnxprodDisplay" xml:space="preserve">
+    <value>Erstelle knxprod {0}</value>
+  </data>
+
+  <!-- Settings / Language -->
+  <data name="Language" xml:space="preserve">
+    <value>Sprache</value>
+  </data>
+  <data name="DisplayLanguage" xml:space="preserve">
+    <value>Anzeigesprache</value>
+  </data>
+  <data name="RestartRequired" xml:space="preserve">
+    <value>Neustart erforderlich für Sprachwechsel</value>
+  </data>
+</root>

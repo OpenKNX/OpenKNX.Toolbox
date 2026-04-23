@@ -5,11 +5,32 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:OpenKNX.Toolbox.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:properties="clr-namespace:OpenKNX.Toolbox.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SettingsPage">
 
-    <Grid>
-        <ui:TextBlock Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}" Text="Hier kommt dann iwas mit Update der Tools. Deswegen auch der Bobbel Links." VerticalAlignment="Center" HorizontalAlignment="Center" />
-    </Grid>
+    <StackPanel Margin="20">
+        <ui:TextBlock Text="{x:Static properties:Resources.Settings}" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" />
+
+        <ui:Card Margin="0,0,0,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <ui:TextBlock Text="{x:Static properties:Resources.DisplayLanguage}" FontSize="16" FontWeight="SemiBold" />
+                </StackPanel>
+                <ComboBox Grid.Column="1" x:Name="LanguageComboBox" Width="200" SelectionChanged="LanguageComboBox_SelectionChanged" />
+            </Grid>
+        </ui:Card>
+
+        <ui:InfoBar x:Name="RestartInfoBar" 
+                     Title="{x:Static properties:Resources.RestartRequired}" 
+                     IsOpen="False" 
+                     Severity="Informational"
+                     IsClosable="False"
+                     Margin="0,10,0,0" />
+    </StackPanel>
 </Page>

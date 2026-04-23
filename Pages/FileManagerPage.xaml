@@ -7,7 +7,8 @@
       xmlns:class="clr-namespace:OpenKNX.Toolbox.Classes"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:conv="clr-namespace:OpenKNX.Toolbox.Converter"
-      mc:Ignorable="d" 
+      xmlns:properties="clr-namespace:OpenKNX.Toolbox.Properties"
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FileManagerPage"
       Name="PageControl">
@@ -20,17 +21,17 @@
         <class:BindingProxy x:Key="DownloadProxy" Data="{Binding DownloadCommand}" />
 
         <ContextMenu x:Key="FileContextMenu">
-            <ui:MenuItem Command="{Binding Data, Source={StaticResource DownloadProxy}}" CommandParameter="{Binding}" Header="Herunterladen">
+            <ui:MenuItem Command="{Binding Data, Source={StaticResource DownloadProxy}}" CommandParameter="{Binding}" Header="{x:Static properties:Resources.Download}">
                 <ui:MenuItem.Icon>
                     <ui:SymbolIcon Symbol="ArrowDownload24" />
                 </ui:MenuItem.Icon>
             </ui:MenuItem>
-            <ui:MenuItem Header="Details">
+            <ui:MenuItem Header="{x:Static properties:Resources.Details}">
                 <ui:MenuItem.Icon>
                     <ui:SymbolIcon Symbol="DocumentEndnote24" />
                 </ui:MenuItem.Icon>
             </ui:MenuItem>
-            <ui:MenuItem Command="{Binding Data, Source={StaticResource DeleteProxy}}" CommandParameter="{Binding}" Header="Löschen" Foreground="IndianRed">
+            <ui:MenuItem Command="{Binding Data, Source={StaticResource DeleteProxy}}" CommandParameter="{Binding}" Header="{x:Static properties:Resources.Delete}" Foreground="IndianRed">
                 <ui:MenuItem.Icon>
                     <ui:SymbolIcon Symbol="Delete24" />
                 </ui:MenuItem.Icon>
@@ -48,9 +49,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ui:TextBox Text="{Binding RemoteAddress}" PlaceholderText="Adresse: 1.1.4" />
+        <ui:TextBox Text="{Binding RemoteAddress}" PlaceholderText="{x:Static properties:Resources.AddressPlaceholder}" />
 
-        <ui:Button Grid.Column="1" Content="Neu laden" Margin="5,0,0,0" VerticalAlignment="Stretch" Command="{Binding ReloadFilesCommand}" />
+        <ui:Button Grid.Column="1" Content="{x:Static properties:Resources.Reload}" Margin="5,0,0,0" VerticalAlignment="Stretch" Command="{Binding ReloadFilesCommand}" />
 
         <TreeView Grid.Row="1" Grid.Column="0" SelectedItemChanged="TreeView_SelectedItemChanged" AllowDrop="True" DragEnter="TreeView_DragEnter" DragLeave="TreeView_DragLeave" DragOver="TreeView_DragOver" Drop="TreeView_Drop" Opacity="{Binding IsDragging, Converter={StaticResource BoolToFloatConverter}}">
             <ui:TreeViewItem ItemsSource="{Binding Items}" Header="/" Grid.Row="1" Grid.ColumnSpan="2">
@@ -65,7 +66,7 @@
         <Grid Visibility="{Binding IsDragging, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}" IsHitTestVisible="False" Grid.Row="1" Grid.ColumnSpan="2">
             <Border Background="{DynamicResource AccentTextFillColorPrimaryBrush}" Opacity="0.1" />
             <Rectangle StrokeDashArray="4 2" RadiusX="10" RadiusY="10" Stroke="{DynamicResource TextFillColorTertiaryBrush}" StrokeThickness="2" Margin="5"/>
-            <TextBlock Text="Datei hier ablegen zum Hochladen" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <TextBlock Text="{x:Static properties:Resources.DropFileUpload}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
         </Grid>
     </Grid>
 </Page>

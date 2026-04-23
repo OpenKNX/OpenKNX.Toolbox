@@ -49,27 +49,27 @@ namespace OpenKNX.Toolbox.Models
         {
             if(UpdateVersion == null)
             {
-                MainViewModel.Instanz.ShowError("Update nicht möglich", "Es ist keine Update-Version ausgewählt.");
+                MainViewModel.Instanz.ShowError(Properties.Resources.UpdateNotPossible, Properties.Resources.NoUpdateVersionSelected);
                 return;
             }
 
             ApplicationModel? app = FirmwareManagerViewModel.Instanz.Applications.FirstOrDefault(a => a.AppId == AppId);
             if(app == null)
             {
-                MainViewModel.Instanz.ShowError("Update nicht möglich", $"Die Anwendung mit der ID {AppId} ist nicht in der lokalen Datenbank vorhanden.");
+                MainViewModel.Instanz.ShowError(Properties.Resources.UpdateNotPossible, string.Format(Properties.Resources.ApplicationIdMissing, AppId));
                 return;
             }
 
             ReleaseModel? release = app.Releases.FirstOrDefault(r => r.Version != null && r.Version.CompareTo(UpdateVersion) == 0);
             if(release == null)
             {
-                MainViewModel.Instanz.ShowError("Update nicht möglich", $"Die Anwendungsversion {UpdateVersion} ist nicht in der lokalen Datenbank vorhanden.");
+                MainViewModel.Instanz.ShowError(Properties.Resources.UpdateNotPossible, string.Format(Properties.Resources.ApplicationVersionMissing, UpdateVersion));
                 return;
             }
 
             if(!release.IsLocalAvailable)
             {
-                MainViewModel.Instanz.ShowError("Update nicht möglich", "Die Anwendungsversion ist noch nicht lokal vorhanden und wird jetzt heruntergeladen.");
+                MainViewModel.Instanz.ShowError(Properties.Resources.UpdateNotPossible, Properties.Resources.VersionNotLocalYet);
 
                 string destination = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                 destination = Path.Combine(destination, "OpenKNX", "Firmware", AppId, release.Version.ToString());
@@ -84,7 +84,7 @@ namespace OpenKNX.Toolbox.Models
 
             if(release.ContentModel == null)
             {
-                MainViewModel.Instanz.ShowError("Update nicht möglich", "Die Anwendungsversion enthält kein ContentModel");
+                MainViewModel.Instanz.ShowError(Properties.Resources.UpdateNotPossible, Properties.Resources.ContentModelMissing);
                 return;
             }
 
@@ -94,7 +94,7 @@ namespace OpenKNX.Toolbox.Models
 
             if (products.Count() == 0)
             {
-                MainViewModel.Instanz.ShowError("Update nicht möglich", "Es wurden keine passenden Produkte gefunden.");
+                MainViewModel.Instanz.ShowError(Properties.Resources.UpdateNotPossible, Properties.Resources.NoMatchingProducts);
                 return;
             }
 
@@ -103,12 +103,12 @@ namespace OpenKNX.Toolbox.Models
                 selectedProduct = products.ElementAt(0);
             else if(products.Count() > 1)
             {
-                MainViewModel.Instanz.ShowError("Update nicht möglich", "Es wurden mehrere Produkte gefunden.");
+                MainViewModel.Instanz.ShowError(Properties.Resources.UpdateNotPossible, Properties.Resources.MultipleProductsFound);
                 return;
             }
             if(selectedProduct == null)
             {
-                MainViewModel.Instanz.ShowError("Update nicht möglich", "Es wurde kein Produkt ausgewählt.");
+                MainViewModel.Instanz.ShowError(Properties.Resources.UpdateNotPossible, Properties.Resources.NoProductSelected);
                 return;
             }
 

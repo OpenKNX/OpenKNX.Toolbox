@@ -110,7 +110,7 @@ namespace OpenKNX.Toolbox.ViewModels
                 }
                 catch (Exception ex)
                 {
-                    System.Windows.MessageBox.Show($"Fehler beim Löschen des Firmware-Verzeichnisses:\n{ex.Message}", "Fehler", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show($"{Properties.Resources.DeleteFirmwareDirError}\n{ex.Message}", Properties.Resources.Error, System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
                 }
             }
         }

@@ -9,7 +9,8 @@
       xmlns:libmodels="clr-namespace:OpenKNX.Toolbox.Lib.Models;assembly=OpenKNX.Toolbox.Lib"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:conv="clr-namespace:OpenKNX.Toolbox.Converter"
-      mc:Ignorable="d" 
+      xmlns:properties="clr-namespace:OpenKNX.Toolbox.Properties"
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DeviceManagerPage">
     <Page.Resources>
@@ -23,7 +24,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Foreground="{DynamicResource ResourceKey=TextFillColorPrimaryBrush}" Margin="10,5" Text="Hier werden OpenKNX IP Geräte angezeigt" />
+        <TextBlock Foreground="{DynamicResource ResourceKey=TextFillColorPrimaryBrush}" Margin="10,5" Text="{x:Static properties:Resources.DeviceListIntro}" />
 
         <!--<Menu Foreground="White">
             --><!--<ui:MenuItem Header="Aktualisieren" Icon="{ui:SymbolIcon Symbol=ArrowClockwise24}" Command="{Binding Update}" />--><!--
@@ -41,12 +42,12 @@
 
                         <Grid.ContextMenu>
                             <ContextMenu>
-                                <ui:MenuItem Header="Webseite aufrufen" Command="{Binding DoOpenWebsiteCommand}" Visibility="{Binding IsIP, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <ui:MenuItem Header="{x:Static properties:Resources.OpenWebsite}" Command="{Binding DoOpenWebsiteCommand}" Visibility="{Binding IsIP, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <ui:MenuItem.Icon>
                                         <ui:SymbolIcon Symbol="Globe24" />
                                     </ui:MenuItem.Icon>
                                 </ui:MenuItem>
-                                <ui:MenuItem Header="Aktualisieren" Command="{Binding DoUpdateCommand}" Foreground="Green" Visibility="{Binding UpdateVersion, Converter={StaticResource NullToVisibilityConverter}}">
+                                <ui:MenuItem Header="{x:Static properties:Resources.Refresh}" Command="{Binding DoUpdateCommand}" Foreground="Green" Visibility="{Binding UpdateVersion, Converter={StaticResource NullToVisibilityConverter}}">
                                     <ui:MenuItem.Icon>
                                         <ui:SymbolIcon Symbol="ArrowExportUp24" />
                                     </ui:MenuItem.Icon>
@@ -73,7 +74,7 @@
                         </StackPanel>
 
                         <StackPanel Grid.Column="1" Visibility="{Binding UpdateVersion, Converter={StaticResource NullToVisibilityConverter}}" VerticalAlignment="Center" HorizontalAlignment="Right">
-                            <TextBlock Text="Update verfügbar!" FontWeight="Bold" Foreground="Green" FontSize="20" />
+                            <TextBlock Text="{x:Static properties:Resources.UpdateAvailable}" FontWeight="Bold" Foreground="Green" FontSize="20" />
                             <TextBlock Text="{Binding UpdateVersionString}" Foreground="Green" TextAlignment="Right" FontSize="20" />
                         </StackPanel>
                     </Grid>

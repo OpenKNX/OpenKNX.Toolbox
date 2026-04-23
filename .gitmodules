@@ -1,0 +1,12 @@
+[submodule "OpenKNX.Toolbox.Lib"]
+	path = OpenKNX.Toolbox.Lib
+	url = https://github.com/OpenKNX/OpenKNX.Toolbox.Lib.git
+[submodule "OpenKNX.Toolbox.Sign"]
+	path = OpenKNX.Toolbox.Sign
+	url = https://github.com/OpenKNX/OpenKNX.Toolbox.Sign.git
+[submodule "Kaenx-Konnect"]
+	path = Kaenx-Konnect
+	url = https://github.com/OpenKNX/Kaenx-Konnect.git
+[submodule "KnxFileTransferClient.Lib"]
+	path = KnxFileTransferClient.Lib
+	url = https://github.com/OpenKNX/KnxFileTransferClient.Lib.git

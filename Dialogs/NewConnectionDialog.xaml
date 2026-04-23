@@ -6,20 +6,21 @@
       xmlns:local="clr-namespace:OpenKNX.Toolbox.Dialogs"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       xmlns:conv="clr-namespace:OpenKNX.Toolbox.Converter"
+      xmlns:properties="clr-namespace:OpenKNX.Toolbox.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="{Binding Title}"
       IsPrimaryButtonEnabled="{Binding CanContinue}"
-      PrimaryButtonText="Hinzufügen"
-      CloseButtonText="Abbrechen">
+      PrimaryButtonText="{x:Static properties:Resources.Add}"
+      CloseButtonText="{x:Static properties:Resources.Cancel}">
     <ui:ContentDialog.Resources>
         <Style BasedOn="{StaticResource {x:Type ui:ContentDialog}}" TargetType="{x:Type local:NewConnectionDialog}" />
     </ui:ContentDialog.Resources>
 
     <StackPanel>
-        <ui:TextBox Text="{Binding Name}" PlaceholderText="Name" Margin="2" />
-        <ui:TextBox Text="{Binding IpAddress}" PlaceholderText="IP-Adresse" Margin="2" />
-        <ui:TextBox Text="{Binding IpPort}" PlaceholderText="IP-Port" Margin="2" />
-        <CheckBox Content="Ist TCP" IsChecked="{Binding IsTCP}" Margin="2" />
+        <ui:TextBox Text="{Binding Name}" PlaceholderText="{x:Static properties:Resources.ConnectionName}" Margin="2" />
+        <ui:TextBox Text="{Binding IpAddress}" PlaceholderText="{x:Static properties:Resources.IpAddress}" Margin="2" />
+        <ui:TextBox Text="{Binding IpPort}" PlaceholderText="{x:Static properties:Resources.IpPort}" Margin="2" />
+        <CheckBox Content="{x:Static properties:Resources.IsTcp}" IsChecked="{Binding IsTCP}" Margin="2" />
     </StackPanel>
 </ui:ContentDialog>
