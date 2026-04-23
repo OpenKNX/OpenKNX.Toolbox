@@ -51,6 +51,16 @@ jobs:
 
           if (-not $version) { throw "Konnte ProductVersion nicht auslesen." }
           
+
+          $branch = "${{ github.ref_name }}"
+          # Branch normalisieren (feature/test → feature-test)
+          $safeBranch = $branch -replace '[^a-zA-Z0-9\-]', '_'
+      
+          if ($branch -eq "main") {
+              $version = "v$version"
+          } else {
+              $version = "v$version-$safeBranch"
+          }
           echo "Gefundene Version: $version"
           echo "version=$version" >> $env:GITHUB_OUTPUT
 
@@ -62,28 +72,12 @@ jobs:
     - name: Create Git tag
       shell: pwsh
       run: |
-         $version = "${{ steps.version.outputs.version }}"
-         $branch = "${{ github.ref_name }}"
-         
-         # Branch normalisieren (feature/test → feature-test)
-         $safeBranch = $branch -replace '[^a-zA-Z0-9\-]', '_'
-      
-         if ($branch -eq "main") {
-              $tag = "v$version"
-          } else {
-              $tag = "v$version-$safeBranch"
-          }
-      
-          Write-Host "Finaler Tag: $tag"
-          echo "tag=$tag" >> $env:GITHUB_OUTPUT
-      
-          git tag $tag
-          git push origin $tag
-
-
+          git tag ${{ steps.version.outputs.version }}
+          git push origin ${{ steps.version.outputs.version }}
+          
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
       with:
-        tag_name: v${{ steps.version.outputs.tag }}
-        name: v${{ steps.version.outputs.tag }}
+        tag_name: ${{ steps.version.outputs.version }}
+        name: ${{ steps.version.outputs.version }}
         files: OpenKNX.Toolbox.Binaries.zip
